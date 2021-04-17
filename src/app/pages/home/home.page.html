@@ -1,0 +1,79 @@
+<ion-menu side="start" menuId="first" type="overlay">
+  <ion-header no-border>
+    <ion-toolbar color="secondary">
+      <ion-title class="textomenu"> MENU </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <br>
+    <div class="ion-text-center">
+      <img src="./assets/imgs/logo.png" class="ion-margin-start menuimg" (click)="perfilUsuario()">
+    </div>
+    <br>
+    <ion-list class="listSide">
+
+      <ion-menu-toggle auto-hide="false">
+        <ion-item>
+          <ion-icon name="home" slot="start"></ion-icon>
+          <p class="labelmenu">Inicio</p>
+        </ion-item>
+        <ion-item (click)="goView()">
+          <ion-icon name="search" slot="start"></ion-icon>
+          <p class="labelmenu">Visualizador</p>
+        </ion-item>
+        <ion-item (click)="goOuts()">
+          <ion-icon name="paper-plane" slot="start"></ion-icon>
+          <p class="labelmenu">Enviar transferencia</p>
+        </ion-item>
+        <ion-item (click)="goEntry()">
+          <ion-icon name="archive" slot="start"></ion-icon>
+          <p class="labelmenu">Recibir transferencia</p>
+        </ion-item>
+        <ion-item (click)="logout()">
+          <ion-icon name="log-out" slot="start"></ion-icon>
+          <p class="labelmenu">Cerrar sesión</p>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary" class="ion-text-center">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Bienvenido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <br>
+  <br>
+  <div class="ion-text-center">
+    <img src="./assets/imgs/logo.png" class="logoRef" />
+  </div>
+  <br>
+  <br>
+  <ion-label class="headerlbl"> Hola {{name}}! </ion-label>
+  <br>
+  <ion-label class="textlbl"> Hoy es: {{fecha}} </ion-label>
+  <br>
+  <br>
+  <br>
+  <br>
+  <ion-label class="headerlbl">¿Dónde te encuentras hoy?</ion-label>
+  <br>
+  <br>
+  <ion-item mode="ios">
+    <ion-label class="textlbl">Seleccione su ubicacion</ion-label>
+    <ion-select (ionChange)="locationSelect($event)" mode="ios" okText="Aceptar" cancelText="Cancelar">
+      <ion-select-option *ngFor="let ubicacion of locationArr" value="{{ubicacion.IdUbicacion}}">{{ubicacion.NombreUbicacion}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>

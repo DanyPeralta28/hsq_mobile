@@ -1,1 +1,1 @@
-export const urlProd = 'https://teayudo.com.mx/alphahsq/api/';
+export const urlProd = 'http://www.mws.com.mx/hsq/gestion/api/';

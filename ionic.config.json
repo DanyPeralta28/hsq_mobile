@@ -3,5 +3,12 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://DESKTOP-FUT3O4T:4443/AlphaHSQ",
+      "rejectUnauthorized": false
+    }
+  ]
 }

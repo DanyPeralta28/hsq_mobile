@@ -175,6 +175,7 @@ export class EntradasPage implements OnInit {
           if(this.transferencias.CodeResult!=="100"){
             this.arrTransferenciasFailed.push(this.transferencias)
             this.arrTransferenciasFailed.reverse();
+            
             this.alertMsj(
               "Alerta",
               this.transferencias.Message

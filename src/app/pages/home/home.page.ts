@@ -127,4 +127,9 @@ export class HomePage implements OnInit {
     this.router.navigate(['entradas']);
   }
 
+  logout(){
+    this.storage.clear();
+    this.router.navigateByUrl('login');
+  }
+
 }

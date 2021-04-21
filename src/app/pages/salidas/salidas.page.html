@@ -46,7 +46,7 @@
 
       <tr class="colorTR" *ngFor="let transferencia of arrTransferencias; index as i">
         <td class="ion-text-center td1">
-          <ion-label class="colorBlack1"> {{i+1}} </ion-label>
+          <ion-label class="colorBlack1"> {{ arrTransferencias.length - i }} </ion-label>
         </td>
         <td class="ion-text-center">
           <ion-label class="colorBlack1"> {{transferencia.Message}} </ion-label>
@@ -71,7 +71,7 @@
 
       <tr class="colorTR" *ngFor="let transferencia of arrTransferenciasFailed; index as i">
         <td class="ion-text-center td1">
-          <ion-label class="colorBlack1"> {{i+1}} </ion-label>
+          <ion-label class="colorBlack1"> {{ arrTransferenciasFailed.length - i }} </ion-label>
         </td>
         <td class="ion-text-center">
           <ion-label class="colorBlack1"> {{transferencia.Message}} </ion-label>

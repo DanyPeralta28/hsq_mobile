@@ -31,8 +31,8 @@ import {
 })
 export class GlbserviceService {
 
-  constructor(public http: HttpClient) { }
-  
+  constructor(public http: HttpClient) {}
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error has been occurred:', error.error.message);
@@ -56,53 +56,62 @@ export class GlbserviceService {
       })
     }
 
-    let url = urlProd + Apis.login; 
+    let url = urlProd + Apis.login;
     console.log(url)
     return this.http.post(url, JSON.stringify(data), httpOptions)
   }
 
-  handleGetLocation() {
+  handleGetLocation(): Observable < any > {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
     }
-    let url = urlProd + Apis.getUbication; 
+    let url = urlProd + Apis.getUbication;
     console.log(url)
-    return this.http.get(url, httpOptions)
+    let data = {}
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   handleGetTarimas(data) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
     }
-    let url = urlProd + Apis.getTarima + data.idTarima; 
+    let url = urlProd + Apis.getTarima + data.idTarima;
     console.log(url)
-    return this.http.get(url, httpOptions)
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   handleGetTarimasDetail(data) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
     }
-    let url = urlProd + Apis.getTarima + data.idTarima + "/Cajas"; 
+    let url = urlProd + Apis.getTarima + data.idTarima + "/Cajas";
     console.log(url)
-    return this.http.get(url, httpOptions)
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   handleGetCaja(data) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded'
       })
     }
-    let url = urlProd + Apis.getCaja + data.idcaja; 
+    let url = urlProd + Apis.getCaja + data.idcaja;
     console.log(url)
-    return this.http.get(url, httpOptions)
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   handlePostTransfer(data) {
@@ -112,7 +121,7 @@ export class GlbserviceService {
       })
     }
 
-    let url = urlProd + Apis.transferTarima; 
+    let url = urlProd + Apis.transferTarima;
     console.log(url)
     return this.http.post(url, data, httpOptions)
   }
@@ -124,7 +133,7 @@ export class GlbserviceService {
       })
     }
 
-    let url = urlProd + Apis.reciveTarima; 
+    let url = urlProd + Apis.reciveTarima;
     console.log(url)
     return this.http.post(url, data, httpOptions)
   }
